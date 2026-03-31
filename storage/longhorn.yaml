@@ -9,9 +9,19 @@ spec:
     repoURL: https://charts.longhorn.io
     chart: longhorn
     targetRevision: 1.11.1
+    helm:
+      values: |
+        preUpgradeChecker:
+          jobEnabled: false
+        preDeleteChecker:
+          jobEnabled: false
+        upgradeChecker:
+          jobEnabled: false
+
   destination:
     server: https://kubernetes.default.svc
     namespace: longhorn-system
+
   syncPolicy:
     automated:
       prune: true
@@ -19,6 +29,6 @@ spec:
     syncOptions:
       - CreateNamespace=true
       - ServerSideApply=true
-      - Validate=false
       - Force=true
+      - Validate=false
       - ApplyOutOfSyncOnly=true
