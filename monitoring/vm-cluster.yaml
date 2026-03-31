@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: vm-cluster
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://victoriametrics.github.io/helm-charts/
+    chart: victoria-metrics-single
+    targetRevision: 0.7.50
+    helm:
+      values: |
+        ingress:
+          enabled: true
+          ingressClassName: nginx
+          pathType: Prefix
+          hosts:
+            - prometheus.berto-it.com
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: monitoring
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
