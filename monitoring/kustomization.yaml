@@ -1,3 +1,4 @@
 resources:
   - namespace.yaml
+  - crds.yaml
   - kube-prometheus-stack.yaml
