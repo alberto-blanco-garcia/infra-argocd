@@ -6,17 +6,17 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://victoriametrics.github.io/helm-charts/
+    repoURL: https://victoriametrics.github.io/helm-charts
     chart: victoria-metrics-single
-    targetRevision: 0.7.50
+    targetRevision: 0.10.14
     helm:
       values: |
         ingress:
           enabled: true
           ingressClassName: nginx
-          pathType: Prefix
           hosts:
             - prometheus.berto-it.com
+          tls: []
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
@@ -26,3 +26,5 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
+      - ServerSideApply=true
+      - Validate=false
