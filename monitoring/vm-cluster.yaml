@@ -16,10 +16,12 @@ spec:
           ingressClassName: nginx
           hosts:
             - prometheus.berto-it.com
+
         server:
-          storage:
-            storageClass: longhorn
+          persistentVolume:
+            enabled: true
             size: 16Gi
+            storageClass: longhorn
             replicaCount: 2
   destination:
     server: https://kubernetes.default.svc
