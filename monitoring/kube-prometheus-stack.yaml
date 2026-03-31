@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://prometheus-community.github.io/helm-charts
     chart: kube-prometheus-stack
-    targetRevision: 61.4.0          # versión estable
+    targetRevision: 61.4.0
     helm:
       values: |
         grafana:
@@ -24,9 +24,8 @@ spec:
             ingressClassName: nginx
             hosts:
               - prometheus.berto-it.com
-  
       crds:
-        create: true 
+        create: true
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
@@ -34,3 +33,7 @@ spec:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+      - Validate=false
