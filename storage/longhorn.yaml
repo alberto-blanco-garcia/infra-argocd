@@ -20,3 +20,5 @@ spec:
       - CreateNamespace=true
       - ServerSideApply=true
       - Validate=false
+      - Force=true
+      - ApplyOutOfSyncOnly=true
