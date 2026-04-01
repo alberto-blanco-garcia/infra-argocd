@@ -6,9 +6,10 @@ metadata:
 spec:
   retentionPeriod: "1"
 
-  #  NODO DE ALMACENAMIENTO
   vmstorage:
     replicaCount: 1
+    nodeSelector:
+      node.longhorn.io/ready: "true"
     storage:
       volumeClaimTemplate:
         spec:
@@ -18,9 +19,10 @@ spec:
             requests:
               storage: "16Gi"
 
-  #  NODO DE CONSULTA
   vmselect:
     replicaCount: 1
+    nodeSelector:
+      node.longhorn.io/ready: "true"
     cacheMountPath: /select-cache
     storage:
       volumeClaimTemplate:
@@ -31,6 +33,7 @@ spec:
             requests:
               storage: "8Gi"
 
-  #  NODO DE INGESTA
   vminsert:
     replicaCount: 1
+    nodeSelector:
+      node.longhorn.io/ready: "true"
