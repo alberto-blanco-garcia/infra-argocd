@@ -17,6 +17,7 @@ spec:
       - key: "node-role.kubernetes.io/master"
         operator: "Exists"
         effect: "NoSchedule"
+    topologySpreadConstraints: []
     storage:
       volumeClaimTemplate:
         spec:
@@ -37,6 +38,7 @@ spec:
       - key: "node-role.kubernetes.io/master"
         operator: "Exists"
         effect: "NoSchedule"
+    topologySpreadConstraints: []
     cacheMountPath: /select-cache
     storage:
       volumeClaimTemplate:
@@ -58,3 +60,4 @@ spec:
       - key: "node-role.kubernetes.io/master"
         operator: "Exists"
         effect: "NoSchedule"
+    topologySpreadConstraints: []
