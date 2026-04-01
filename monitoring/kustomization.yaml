@@ -4,4 +4,4 @@ resources:
   - vmcluster.yaml
   - grafana.yaml
   - grafana-ingress.yaml
-  - vmselect-ingress.yaml
+  - vm-ingress.yaml
