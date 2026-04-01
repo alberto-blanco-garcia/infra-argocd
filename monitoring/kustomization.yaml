@@ -12,3 +12,4 @@ resources:
   - kubelet-scrape.yaml
   - kube-apiserver-scrape.yaml
   - ingress-nginx-scrape.yaml
+  - vmagent.yaml
