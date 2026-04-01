@@ -5,3 +5,10 @@ resources:
   - grafana.yaml
   - grafana-ingress.yaml
   - vm-ingress.yaml
+  - kube-state-metrics.yaml
+  - kube-state-scrape.yaml
+  - node-exporter.yaml
+  - node-exporter-scrape.yaml
+  - kubelet-scrape.yaml
+  - kube-apiserver-scrape.yaml
+  - ingress-nginx-scrape.yaml
