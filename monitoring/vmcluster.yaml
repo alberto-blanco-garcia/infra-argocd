@@ -3,18 +3,17 @@ kind: VMCluster
 metadata:
   name: vm
   namespace: monitoring
+
 spec:
   retentionPeriod: "1"
 
+  # === VM STORAGE ===
   vmstorage:
     replicaCount: 1
     nodeSelector:
       node.longhorn.io/enable-default-disk: "true"
     tolerations:
       - key: "node-role.kubernetes.io/control-plane"
-        operator: "Exists"
-        effect: "NoSchedule"
-      - key: "node-role.kubernetes.io/master"
         operator: "Exists"
         effect: "NoSchedule"
     topologySpreadConstraints: []
@@ -27,15 +26,13 @@ spec:
             requests:
               storage: "16Gi"
 
+  # === VM SELECT ===
   vmselect:
     replicaCount: 1
     nodeSelector:
       node.longhorn.io/enable-default-disk: "true"
     tolerations:
       - key: "node-role.kubernetes.io/control-plane"
-        operator: "Exists"
-        effect: "NoSchedule"
-      - key: "node-role.kubernetes.io/master"
         operator: "Exists"
         effect: "NoSchedule"
     topologySpreadConstraints: []
@@ -49,15 +46,13 @@ spec:
             requests:
               storage: "8Gi"
 
+  # === VM INSERT ===
   vminsert:
     replicaCount: 1
     nodeSelector:
       node.longhorn.io/enable-default-disk: "true"
     tolerations:
       - key: "node-role.kubernetes.io/control-plane"
-        operator: "Exists"
-        effect: "NoSchedule"
-      - key: "node-role.kubernetes.io/master"
         operator: "Exists"
         effect: "NoSchedule"
     topologySpreadConstraints: []
