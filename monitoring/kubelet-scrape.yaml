@@ -1,11 +1,15 @@
 apiVersion: operator.victoriametrics.com/v1beta1
-kind: VMNodeScrape
+kind: VMServiceScrape
 metadata:
   name: kubelet
   namespace: monitoring
 spec:
-  scheme: HTTPS
-  tlsConfig:
-    insecureSkipVerify: true
-  path: /metrics
-  port: 10250
+  endpoints:
+    - port: https
+      scheme: HTTPS
+      path: /metrics
+      tlsConfig:
+        insecureSkipVerify: true
+  selector:
+    matchLabels:
+      k8s-app: kubelet
