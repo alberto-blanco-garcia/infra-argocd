@@ -1,0 +1,33 @@
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMAgent
+metadata:
+  name: vmagent
+  namespace: monitoring
+
+spec:
+  replicaCount: 1
+
+  scrapeInterval: 15s
+
+  remoteWrite:
+    - url: http://vminsert-vm.monitoring.svc.cluster.local:8480/insert/0/prometheus
+
+  serviceScrapeSelector:
+    matchLabels: {}
+
+  podScrapeSelector:
+    matchLabels: {}
+
+  nodeScrapeSelector:
+    matchLabels: {}
+
+  scrapeConfigSelector:
+    matchLabels: {}
+
+  nodeSelector:
+    node.longhorn.io/enable-default-disk: "true"
+
+  tolerations:
+    - key: "node-role.kubernetes.io/control-plane"
+      operator: "Exists"
+      effect: "NoSchedule"
