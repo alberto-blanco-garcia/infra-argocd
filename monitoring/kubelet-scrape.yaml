@@ -1,0 +1,11 @@
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMNodeScrape
+metadata:
+  name: kubelet
+  namespace: monitoring
+spec:
+  scheme: HTTPS
+  tlsConfig:
+    insecureSkipVerify: true
+  path: /metrics
+  port: 10250
