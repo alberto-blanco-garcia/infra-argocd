@@ -9,7 +9,7 @@ spec:
   vmstorage:
     replicaCount: 1
     nodeSelector:
-      node.longhorn.io/ready: "true"
+      node.longhorn.io/enable-default-disk: "true"
     tolerations:
       - key: "node-role.kubernetes.io/control-plane"
         operator: "Exists"
@@ -29,7 +29,7 @@ spec:
   vmselect:
     replicaCount: 1
     nodeSelector:
-      node.longhorn.io/ready: "true"
+      node.longhorn.io/enable-default-disk: "true"
     tolerations:
       - key: "node-role.kubernetes.io/control-plane"
         operator: "Exists"
@@ -50,7 +50,7 @@ spec:
   vminsert:
     replicaCount: 1
     nodeSelector:
-      node.longhorn.io/ready: "true"
+      node.longhorn.io/enable-default-disk: "true"
     tolerations:
       - key: "node-role.kubernetes.io/control-plane"
         operator: "Exists"
