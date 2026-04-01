@@ -17,4 +17,4 @@ spec:
               service:
                 name: vmselect-vm
                 port:
-                  number: 8428
+                  number: 8481
