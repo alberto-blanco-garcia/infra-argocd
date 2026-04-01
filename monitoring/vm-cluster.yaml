@@ -18,7 +18,7 @@ spec:
             - prometheus.berto-it.com
 
         server:
-          replicaCount: 1
+          replicaCount: 1     # ✅ ESTO ES LO IMPORTANTE
           persistentVolume:
             enabled: true
             size: 16Gi
