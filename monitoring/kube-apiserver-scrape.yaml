@@ -1,0 +1,14 @@
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMServiceScrape
+metadata:
+  name: kube-apiserver
+  namespace: monitoring
+spec:
+  endpoints:
+    - port: https
+      scheme: HTTPS
+      tlsConfig:
+        insecureSkipVerify: true
+  selector:
+    matchLabels:
+      component: kube-apiserver
