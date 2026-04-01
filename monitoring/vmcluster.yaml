@@ -5,13 +5,32 @@ metadata:
   namespace: monitoring
 spec:
   retentionPeriod: "1"
-  replicaCount: 1
-  storage:
-    storageClassName: longhorn
-    volumeClaimTemplate:
-      spec:
-        accessModes: ["ReadWriteOnce"]
-        storageClassName: longhorn
-        resources:
-          requests:
-            storage: 16Gi
+
+  #  NODO DE ALMACENAMIENTO
+  vmstorage:
+    replicaCount: 1
+    storage:
+      volumeClaimTemplate:
+        spec:
+          accessModes: ["ReadWriteOnce"]
+          storageClassName: longhorn
+          resources:
+            requests:
+              storage: "16Gi"
+
+  #  NODO DE CONSULTA
+  vmselect:
+    replicaCount: 1
+    cacheMountPath: /select-cache
+    storage:
+      volumeClaimTemplate:
+        spec:
+          accessModes: ["ReadWriteOnce"]
+          storageClassName: longhorn
+          resources:
+            requests:
+              storage: "8Gi"
+
+  #  NODO DE INGESTA
+  vminsert:
+    replicaCount: 1
