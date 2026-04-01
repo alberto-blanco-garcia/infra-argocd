@@ -2,6 +2,6 @@ resources:
   - namespace.yaml
   - vm-operator.yaml
   - vmcluster.yaml
-  - vm-ingress.yaml
   - grafana.yaml
   - grafana-ingress.yaml
+  - vmselect-ingress.yaml
