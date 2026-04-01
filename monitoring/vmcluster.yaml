@@ -56,18 +56,3 @@ spec:
         operator: "Exists"
         effect: "NoSchedule"
     topologySpreadConstraints: []
-
-  #  === VM AGENT (scraping) ===
-  agent:
-    replicaCount: 1
-    scrapeInterval: 15s
-    remoteWrite:
-      - url: http://vminsert-vm.monitoring.svc.cluster.local:8480/insert/0/prometheus
-    serviceScrapeSelector:
-      matchLabels: {}
-    podScrapeSelector:
-      matchLabels: {}
-    nodeScrapeSelector:
-      matchLabels: {}
-    scrapeConfigSelector:
-      matchLabels: {}
