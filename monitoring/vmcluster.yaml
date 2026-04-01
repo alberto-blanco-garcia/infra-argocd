@@ -7,7 +7,22 @@ metadata:
 spec:
   retentionPeriod: "1"
 
-  # === VM STORAGE ===
+  #  === VM AGENT (scraping) ===
+  agent:
+    replicaCount: 1
+    scrapeInterval: 15s
+    remoteWrite:
+      - url: http://vminsert-vm.monitoring.svc.cluster.local:8480/insert/0/prometheus
+    serviceScrapeSelector:
+      matchLabels: {}
+    podScrapeSelector:
+      matchLabels: {}
+    nodeScrapeSelector:
+      matchLabels: {}
+    scrapeConfigSelector:
+      matchLabels: {}
+
+  #  === VM STORAGE ===
   vmstorage:
     replicaCount: 1
     nodeSelector:
@@ -26,7 +41,7 @@ spec:
             requests:
               storage: "8Gi"
 
-  # === VM SELECT ===
+  #  === VM SELECT ===
   vmselect:
     replicaCount: 1
     nodeSelector:
@@ -46,7 +61,7 @@ spec:
             requests:
               storage: "8Gi"
 
-  # === VM INSERT ===
+  #  === VM INSERT ===
   vminsert:
     replicaCount: 1
     nodeSelector:
